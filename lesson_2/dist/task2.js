@@ -39,6 +39,13 @@ class AbstractSelling {
     get countInfo() {
         return this.count;
     }
+    compare(a, b) {
+        if (a.getPrice() > b.getPrice())
+            return 1;
+        if (a.getPrice() < b.getPrice())
+            return -1;
+        return 0;
+    }
 }
 class FirstSelling extends AbstractSelling {
     constructor(product, count) {
@@ -50,9 +57,10 @@ class FirstSelling extends AbstractSelling {
     }
 }
 class SecondSelling extends AbstractSelling {
-    countForDiscount = 3;
-    constructor(product, count) {
+    countForDiscount;
+    constructor(product, count, countForDiscount) {
         super(product, count);
+        this.countForDiscount = countForDiscount;
     }
     getPrice() {
         const price = this.count >= this.countForDiscount
@@ -70,6 +78,28 @@ const house = new Product('House', 25_000_000);
 const keyboard = new Product('Keyboard', 10_000);
 const icecream = new Product('icecream', 200);
 const firstSell = new FirstSelling(cup, 10);
-const secondSell = new SecondSelling(house, 4);
-console.log(firstSell.getPrice());
-console.log(secondSell.getPrice());
+const secondSell = new FirstSelling(monitor, 3);
+const thirdSell = new FirstSelling(chair, 5);
+const fourthSell = new FirstSelling(table, 5);
+const fifthSell = new SecondSelling(car, 2, 2);
+const sixthSell = new SecondSelling(house, 4, 2);
+const seventhSell = new SecondSelling(keyboard, 40, 50);
+const eighthSell = new SecondSelling(icecream, 400, 100);
+const sells = [
+    firstSell,
+    secondSell,
+    thirdSell,
+    fourthSell,
+    fifthSell,
+    sixthSell,
+    seventhSell,
+    eighthSell,
+];
+sells.sort((a, b) => {
+    if (a.getPrice() > b.getPrice())
+        return 1;
+    if (a.getPrice() < b.getPrice())
+        return -1;
+    return 0;
+});
+console.log(sells);
