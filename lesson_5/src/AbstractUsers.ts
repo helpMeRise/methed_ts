@@ -25,5 +25,13 @@ export abstract class Users<T extends User> {
   get(id: number): T | null {
     return this.userList.find(item => item.id === id) ?? null
   }
+
+  sorted(type: string = 'по возрастанию'): T[] {
+    if (type === 'по возрастанию') {
+      return this.userList.sort((a, b) => a.age - b.age)
+    } else {
+      return this.userList.sort((a, b) => b.age - a.age)
+    }
+  }
   
 }

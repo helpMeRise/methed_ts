@@ -17,5 +17,13 @@ class Users {
     get(id) {
         return this.userList.find(item => item.id === id) ?? null;
     }
+    sorted(type = 'по возрастанию') {
+        if (type === 'по возрастанию') {
+            return this.userList.sort((a, b) => a.age - b.age);
+        }
+        else {
+            return this.userList.sort((a, b) => b.age - a.age);
+        }
+    }
 }
 exports.Users = Users;

@@ -35,7 +35,7 @@ students.add({
   id: 4,
   firstname: 'Maks',
   surname: 'Leskin',
-  age: 25,
+  age: 26,
   year: 1,
   specialty: 'asswd',
 })
@@ -44,7 +44,7 @@ students.add({
   id: 5,
   firstname: 'Maks',
   surname: 'Leskin',
-  age: 26,
+  age: 25,
   year: 3,
   specialty: 'aaswd',
 })
